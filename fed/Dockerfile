@@ -24,7 +24,9 @@ RUN chmod +x ./bin/*.sh \
 && apt-get install dos2unix -yq && dos2unix ./bin/*.sh \
 # for some reason, Jenkins delivers start script with params "interactive", "uploadStartupDirectory" so remove these...
 && sed -i "s#interactive##g;s#uploadStartupDirectory##g" ./bin/connect_network.sh \
-&& cat ./bin/connect_network.sh
+&& sed -i "s#interactive##g;s#uploadStartupDirectory##g" ./bin/start_network.sh \
+&& cat ./bin/connect_network.sh \
+&& cat ./bin/start_network.sh
 
 COPY run.sh run.sh
 

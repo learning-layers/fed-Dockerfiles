@@ -6,3 +6,22 @@ fed:
         - "9011/udp:9011/udp"
     env_file:
         - fed.env
+
+fedlocal:
+    container_name: fedlocal
+    image: learninglayers/fedlocal
+    expose: 
+        - "8080"
+        - "9012/tcp"
+        - "9012/udp"
+    links:
+        - fed
+
+fedremote:
+    container_name: fedremote
+    image: learninglayers/fedremote
+    expose:
+        - "9012/tcp"
+        - "9012/udp"
+    links:
+        - fed
