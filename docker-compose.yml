@@ -8,23 +8,3 @@ fed:
     env_file:
         - fed.env
     net: "host"
-
-fedlocal:
-    container_name: fedlocal
-    image: learninglayers/fedlocal
-    expose:
-        - "9012/tcp"
-        - "9012/udp"
-
-fedlocalfrontend:
-    container_name: fedlocalfrontend
-    image: learninglayers/fedlocalfrontend
-
-#fedremote:
-#    container_name: fedremote
-#    image: learninglayers/fedremote
-#    expose:
-#        - "9012/tcp"
-#        - "9012/udp"
-#    links:
-#        - fed
