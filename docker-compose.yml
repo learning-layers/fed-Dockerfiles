@@ -6,5 +6,5 @@ fed:
         - "9011/tcp:9011/tcp"
         - "9011/udp:9011/udp"
     env_file:
-        - fed.env
+        - common.env
     net: "host"
