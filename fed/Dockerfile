@@ -10,7 +10,17 @@ RUN wget http://layers.dbis.rwth-aachen.de/jenkins/job/las2peer-Demo-Service/las
 && rm archive.zip \
 && mv archive las2peer-federation
 
+RUN wget http://www.java2s.com/Code/JarDownload/commons-jxpath/commons-jxpath-1.1.jar.zip && unzip commons-jxpath-1.1.jar.zip
+RUN wget http://mirror.synyx.de/apache//commons/logging/binaries/commons-logging-1.2-bin.zip && unzip commons-logging-1.2-bin.zip
+RUN wget http://www.java2s.com/Code/JarDownload/sbbi/sbbi-upnplib-1.0.4.jar.zip && unzip sbbi-upnplib-1.0.4.jar.zip
+RUN ls -la *.zip
+RUN rm *.zip
+RUN mv *.jar las2peer-federation/lib
+RUN mv commons-logging-1.2/commons-logging-1.2.jar las2peer-federation/lib
+
 WORKDIR /opt/las2peer-federation
+
+COPY pastry.properties ./etc/pastry.properties
 
 # expose las2peer bootstrap port to host
 EXPOSE 9011/tcp
