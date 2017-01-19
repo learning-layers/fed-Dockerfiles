@@ -34,7 +34,8 @@ RUN chmod +x ./bin/*.sh \
 && apt-get install dos2unix -yq && dos2unix ./bin/*.sh \
 # for some reason, Jenkins delivers start script with params "interactive", "uploadStartupDirectory" so remove these...
 && sed -i "s#interactive##g;s#uploadStartupDirectory##g" ./bin/connect_network.sh \
-&& sed -i "s#interactive##g;s#uploadStartupDirectory##g" ./bin/start_network.sh
+&& sed -i "s#interactive##g;s#uploadStartupDirectory##g" ./bin/start_network.sh \
+&& sed -i "s#8080#8082#g" ./etc/i5.las2peer.webConnector.WebConnector.properties
 
 COPY run.sh run.sh
 
